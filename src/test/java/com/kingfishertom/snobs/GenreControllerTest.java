@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
-import com.kingfishertom.snobs.api.service.GenreService;
 import com.kingfishertom.snobs.model.Genre;
+import com.kingfishertom.snobs.repository.GenreRepository;
 
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
@@ -20,13 +20,13 @@ import jakarta.inject.Inject;
 public class GenreControllerTest extends SnobsTests {
 
 	@Inject
-	GenreService genreService;
+	GenreRepository genreRepository;
 
 	// This test fails
 	@Test
 	void testFindAll() {
 
-		List<Genre> genres = genreService.findAll();
+		List<Genre> genres = genreRepository.findAll();
 
 		assertNotNull(genres);
 
@@ -38,7 +38,7 @@ public class GenreControllerTest extends SnobsTests {
 
 		Long genreId = 1L;
 
-		Genre genre = genreService.findById(genreId);
+		Genre genre = genreRepository.findById(genreId).orElseThrow();
 
 		assertNotNull(genre);
 		assertEquals(genreId, genre.getId());
