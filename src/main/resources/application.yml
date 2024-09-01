@@ -1,0 +1,31 @@
+micronaut:
+  application:
+    name: snobs-backend
+  executors:
+    io:
+      type: fixed
+      nThreads: 100
+  server:
+    cors:
+      enabled: true
+  caches:
+    brackets: 
+      charset: 'UTF-8'
+      maximumSize: 100
+    recordings: 
+      charset: 'UTF-8'
+      maximumSize: 1000
+---
+Locale:
+  localTest: false
+---
+jackson:
+    json-view:
+      enabled: true
+---
+datasources:
+  default:
+    url: jdbc:postgresql:///postgres 
+    dialect: POSTGRES
+    username: 'postgres'
+    password: 'B&|QcL):A*mc9$1`'    
